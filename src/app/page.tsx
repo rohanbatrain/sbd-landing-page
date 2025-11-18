@@ -46,6 +46,18 @@ export default function Home() {
     <div className="relative min-h-screen w-full h-full flex flex-col items-center overflow-hidden">
       <Header />
 
+      {/* Development Notice */}
+      <div className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-center py-3 px-4 shadow-lg z-50">
+        <div className="max-w-4xl mx-auto flex items-center justify-center gap-2">
+          <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+          <p className="text-sm font-medium">
+            🚧 This project is in early development. Features may not work as intended. 
+            Please wait for the beta release. You are welcome to explore, but consider it not production-ready.
+          </p>
+          <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+        </div>
+      </div>
+
       {/* Hero Section */}
       <main className="relative pt-32 pb-16 container mx-auto px-4 z-10">
         <motion.div
