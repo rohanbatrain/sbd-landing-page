@@ -32,7 +32,7 @@ export default function Home() {
   const [isHovered2, setIsHovered2] = useState(false);
   const [isHovered1, setIsHovered1] = useState(false);
   const [isHovered3, setIsHovered3] = useState(false);
-  const [activeTab, setActiveTab] = useState<'technical' | 'philosophy'>('philosophy');
+  const [activeTab, setActiveTab] = useState<'technical' | 'philosophy' | 'security'>('philosophy');
 
   const handleMouseMove = (event: React.MouseEvent<HTMLButtonElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -442,6 +442,16 @@ export default function Home() {
                   >
                     Technical Capabilities
                   </button>
+                  <button
+                    onClick={() => setActiveTab('security')}
+                    className={`px-6 py-3 rounded-md font-medium transition-all duration-300 ${
+                      activeTab === 'security'
+                        ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                        : 'text-white/70 hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    Security Capabilities
+                  </button>
                 </div>
               </div>
             </div>
@@ -648,15 +658,114 @@ export default function Home() {
                   <h3 className="text-2xl font-semibold text-white">Enterprise Security</h3>
                 </div>
                 <p className="text-white/80 mb-4">
-                  JWT authentication, 2FA, rate limiting, encryption, audit logging, and Cloudflare Turnstile integration.
+                  JWT authentication, 2FA, rate limiting, encryption, audit logging, and Cloudflare Turnstile integration. Zero-trust architecture with client-side encryption ensures you control your data keys.
                 </p>
                 <ul className="text-white/70 space-y-2">
-                  <li>• Multi-layer security architecture</li>
-                  <li>• Zero-trust authentication model</li>
-                  <li>• End-to-end encryption</li>
-                  <li>• Comprehensive audit trails</li>
+                  <li>• Multi-layer security architecture with client-controlled encryption</li>
+                  <li>• Zero-trust model: users own their encryption keys</li>
+                  <li>• End-to-end encryption with server-side ciphertext processing only</li>
+                  <li>• Comprehensive audit trails for compliance</li>
                 </ul>
               </motion.div>
+            </motion.div>
+          )}
+
+          {/* Security Features Tab */}
+          {activeTab === 'security' && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto"
+            >
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-amber-400" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-white">Zero-Trust Architecture</h3>
+                </div>
+                <p className="text-white/80 mb-4">
+                  True zero trust means users control their own encryption keys. Client-side encryption ensures your data is encrypted before it reaches our servers, and only you hold the keys to decrypt it.
+                </p>
+                <ul className="text-white/70 space-y-2">
+                  <li>• User-generated and controlled encryption keys</li>
+                  <li>• Client-side encryption before data transmission</li>
+                  <li>• Server never sees plaintext - only ciphertext</li>
+                  <li>• Complete data portability and provider independence</li>
+                </ul>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                    <Database className="w-6 h-6 text-purple-400" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-white">Client-Side Encryption & Key Management</h3>
+                </div>
+                <p className="text-white/80 mb-4">
+                  Data is encrypted on your device before transmission. You control the encryption keys, ensuring end-to-end security where servers only process ciphertext and never access your plaintext data.
+                </p>
+                <ul className="text-white/70 space-y-2">
+                  <li>• TLS for transport encryption (HTTPS/WSS)</li>
+                  <li>• Client-side Fernet encryption for end-to-end confidentiality</li>
+                  <li>• User-controlled keys with secure key derivation</li>
+                  <li>• Optional envelope encryption for additional security layers</li>
+                </ul>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center">
+                    <Users className="w-6 h-6 text-cyan-400" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-white">User-Agent & IP Lockdown</h3>
+                </div>
+                <p className="text-white/80 mb-4">
+                  Protect sensitive accounts by binding sessions to device fingerprints and IP constraints. Administrators can configure allowlists, deny lists, and geo-based rules.
+                </p>
+                <ul className="text-white/70 space-y-2">
+                  <li>• Per-account IP allowlist / denylist</li>
+                  <li>• Optional user-agent binding and device recognition</li>
+                  <li>• Automated anomaly detection and temporary lockdowns</li>
+                </ul>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-green-400" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-white">Auth, Monitoring & Integrations</h3>
+                </div>
+                <p className="text-white/80 mb-4">
+                  The backend (FastAPI) provides JWT-based auth, audit logging, rate limiting, and integrations with Turnstile and WAFs. Admin endpoints allow security policy management.
+                </p>
+                <ul className="text-white/70 space-y-2">
+                  <li>• JWT + refresh token lifecycle with revocation</li>
+                  <li>• Audit logs and immutable event streams for compliance</li>
+                  <li>• Admin APIs (e.g. `/api/admin/security`, `/api/security/allowlist`) to manage policies</li>
+                </ul>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10 col-span-full">
+                <h3 className="text-xl font-semibold text-white mb-4">How the Backend Helps</h3>
+                <p className="text-white/80 mb-4">
+                  The server-side implementation (FastAPI) includes middleware and managers to enforce policies, support client-side encryption workflows, and expose administrative endpoints for security configuration. The backend never stores or accesses user encryption keys - it only processes ciphertext.
+                </p>
+                <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4 mb-4">
+                  <h4 className="text-amber-400 font-semibold mb-2">🔐 Privacy & Encryption: Key Considerations</h4>
+                  <div className="text-white/70 text-sm space-y-2">
+                    <p><strong>Client-Side Encryption:</strong> Optional feature (disabled by default) that can only be enabled during account creation. When enabled, protects sensitive content like notes with user-controlled keys.</p>
+                    <p><strong>Functional Data:</strong> Analytical features (emotion tracking, mathematical metrics) remain unencrypted for performance and usability - these are designed for quick access and analysis.</p>
+                    <p><strong>Self-Hosting Option:</strong> For maximum privacy, users can switch to self-hosted, air-tight instances with complete data control.</p>
+                    <p><strong>Freedom Philosophy:</strong> The system values user choice - configure encryption and hosting to meet your specific privacy needs.</p>
+                  </div>
+                </div>
+                <p className="text-white/70 text-sm">
+                  For implementation details, see the Security Documentation linked in the footer or the repository under <code className="font-mono">src/second_brain_database</code>. You can also explore the experimental admin APIs at <code className="font-mono">/api/admin/security</code> on your local instance.
+                </p>
+              </div>
             </motion.div>
           )}
         </div>
