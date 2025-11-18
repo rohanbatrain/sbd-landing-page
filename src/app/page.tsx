@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-html-link-for-pages, @typescript-eslint/no-unused-vars, react/no-unescaped-entities */
+/* eslint-disable @typescript-eslint/no-unused-vars, react/no-unescaped-entities */
 "use client";
 
 import { motion } from "framer-motion";
@@ -24,6 +24,7 @@ import GlowingAdSenseCard from "@/components/components/Social";
 import BentoGrid from "@/components/components/bento-grid";
 import Grid from "@/components/components/grid";
 import Grid2 from "@/components/components/grid2";
+import ArchitectureMap from "@/components/ArchitectureMap";
 
 export default function Home() {
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -147,38 +148,9 @@ export default function Home() {
         </motion.div>
       </main>
 
-      {/* Architecture Visualization */}
-      <div className="min-h-screen mt-32 w-full h-full flex flex-col items-center overflow-hidden relative bg-gradient-to-b from-[#040508] to-[#0C0F15]">
-        <div className="w-[80%] relative flex items-center justify-center bg-black bp4:h-[500px] bp3:h-[400px] h-[700px] rounded-2xl overflow-hidden">
-          <BorderBeam
-            duration={6}
-            size={1000}
-            className="from-transparent via-blue-500 to-transparent"
-          />
-          <BorderBeam
-            duration={6}
-            delay={3}
-            size={1000}
-            className="from-transparent via-purple-500 to-transparent"
-          />
-
-          {/* Architecture Diagram Placeholder */}
-          <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/40">
-            <div className="text-center space-y-4">
-              <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                <Database className="w-16 h-16 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-white">MongoDB Brain</h3>
-              <p className="text-white/70 max-w-md">
-                Central knowledge storage with flexible document model and vector embeddings
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="w-full mt-8">
-          <LogoMarquee />
-        </div>
+      {/* Architecture Visualization (Mermaid) */}
+      <div className="w-full">
+        <ArchitectureMap />
       </div>
 
       {/* Introduction Section */}
