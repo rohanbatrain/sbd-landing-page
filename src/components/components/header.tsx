@@ -200,6 +200,17 @@ const Header = () => {
                     <ul className="mt-12 space-y-4">
                       <li>
                         <NavigationMenuLink asChild>
+                          <Link
+                            href="/microfrontends"
+                            className="text-white hover:text-gray-300 block pb-1"
+                          >
+                            Microfrontends
+                            <div className="w-[150px] h-[1px] mt-4 bg-gradient-to-r from-[#2E3A58] to-[#455783]" />
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild>
                           <a
                             href="/docs/architecture"
                             className="text-white hover:text-gray-300 block pb-1"

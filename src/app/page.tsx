@@ -44,10 +44,8 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen w-full h-full flex flex-col items-center overflow-hidden">
-      <Header />
-
-      {/* Development Notice */}
-      <div className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-center py-3 px-4 shadow-lg z-50">
+      {/* Development Notice (rendered above header) */}
+      <div className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-center py-3 px-4 shadow-lg z-60">
         <div className="max-w-4xl mx-auto flex items-center justify-center gap-2">
           <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
           <p className="text-sm font-medium">
@@ -57,6 +55,8 @@ export default function Home() {
           <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
         </div>
       </div>
+
+      <Header />
 
       {/* Hero Section */}
       <main className="relative pt-32 pb-16 container mx-auto px-4 z-10">
@@ -391,18 +391,27 @@ export default function Home() {
                 <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
                   <Database className="w-6 h-6 text-purple-400" />
                 </div>
-                <h3 className="text-2xl font-semibold text-white">Centralized Backend</h3>
+                <h3 className="text-2xl font-semibold text-white">IPAM</h3>
               </div>
               <p className="text-white/80 mb-4">
-                These small, focused frontends operate independently, interacting with the centralized MongoDB database via the Flask API.
+                Intelligent IP Address Management with hierarchical allocation, real-time monitoring, and audit trails.
               </p>
               <ul className="text-white/70 space-y-2">
-                <li>• Independent operation</li>
-                <li>• API-driven communication</li>
-                <li>• Consistent data access</li>
-                <li>• Scalable architecture</li>
+                <li>• Hierarchical Allocation</li>
+                <li>• Real-time Monitoring</li>
+                <li>• Audit Trails</li>
+                <li>• Network Analytics</li>
               </ul>
             </motion.div>
+          </div>
+
+          <div className="flex justify-center mt-8">
+            <HoverBorderGradient
+              className="bg-gradient-to-b from-green-600 to-green-800 px-8 py-3 text-white font-medium rounded-full mx-auto"
+              onClick={() => window.location.href = '/microfrontends'}
+            >
+              Explore Microfrontends
+            </HoverBorderGradient>
           </div>
         </div>
       </div>
