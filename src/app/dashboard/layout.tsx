@@ -30,30 +30,7 @@ export default function DashboardLayout({
             />
 
             <div className={`flex flex-col min-h-screen transition-all duration-300 ${isCollapsed ? 'ml-20' : 'ml-72'}`}>
-                {/* Header */}
-                <header className="sticky top-0 z-30 bg-black/20 backdrop-blur-md border-b border-white/5 px-6 py-4">
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <h1 className="text-2xl font-bold text-white">
-                                Hello {user?.username || 'User'}
-                            </h1>
-                            <p className="text-white/50 text-sm">
-                                {currentWorkspace} Workspace
-                            </p>
-                        </div>
-                        {isAuthenticated && (
-                            <Button
-                                onClick={handleLogout}
-                                variant="ghost"
-                                size="sm"
-                                className="text-white/60 hover:text-white hover:bg-white/10"
-                            >
-                                <LogOut className="w-4 h-4 mr-2" />
-                                Logout
-                            </Button>
-                        )}
-                    </div>
-                </header>
+                {/* Header removed as per user request (sidebar handles navigation and context) */}
 
                 {/* Main Content */}
                 <main className="p-6 overflow-y-auto">
